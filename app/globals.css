@@ -1,0 +1,115 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg-base: #03050f;
+  --bg-2: #070b1a;
+  --bg-3: #0c1228;
+  --accent: #38bdf8;
+  --accent-glow: #0ea5e9;
+  --accent-2: #1d4ed8;
+  --text-primary: #e2eaf8;
+  --text-muted: #7a8fb5;
+  --text-dim: #3d4f70;
+  --border: rgba(56, 189, 248, 0.08);
+  --border-bright: rgba(56, 189, 248, 0.25);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--bg-base);
+  color: var(--text-primary);
+  font-family: var(--font-inter), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+/* Subtle blueprint grid dot pattern overlay */
+.grid-pattern {
+  background-image:
+    linear-gradient(rgba(56, 189, 248, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(56, 189, 248, 0.03) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+
+.dot-pattern {
+  background-image: radial-gradient(rgba(56, 189, 248, 0.06) 1px, transparent 1px);
+  background-size: 28px 28px;
+}
+
+/* Glass card base style */
+.glass-card {
+  background: var(--bg-2);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  backdrop-filter: blur(12px);
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.glass-card:hover {
+  border-color: var(--border-bright);
+  transform: translateY(-4px);
+  box-shadow: 0 0 30px rgba(56, 189, 248, 0.1);
+}
+
+/* Accent text gradient for headings */
+.text-gradient {
+  background: linear-gradient(135deg, var(--text-primary) 0%, var(--accent) 120%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-base);
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(56, 189, 248, 0.15);
+  border-radius: 8px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(56, 189, 248, 0.3);
+}
+
+/* Hide native cursor only when custom cursor active (desktop, fine pointer) */
+@media (pointer: fine) {
+  .custom-cursor-active * {
+    cursor: none !important;
+  }
+}
+
+/* Shimmer effect for star badge */
+.shimmer-text {
+  background: linear-gradient(
+    90deg,
+    var(--accent) 0%,
+    #ffffff 50%,
+    var(--accent) 100%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.shimmer-text:hover {
+  animation: shimmer 1.5s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
